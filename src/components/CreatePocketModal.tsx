@@ -20,17 +20,22 @@ export const CreatePocketModal = ({ open, onOpenChange }: { open: boolean; onOpe
       return;
     }
 
-    addPocket({
+    const amount = parseFloat(balance);
+    const success = addPocket({
       name,
-      balance: parseFloat(balance),
+      balance: amount,
       color: selectedColor,
     });
 
-    toast.success('Pocket created!');
-    setName('');
-    setBalance('');
-    setSelectedColor(COLORS[0]);
-    onOpenChange(false);
+    if (success) {
+      toast.success('Pocket created!');
+      setName('');
+      setBalance('');
+      setSelectedColor(COLORS[0]);
+      onOpenChange(false);
+    } else {
+      toast.error('Insufficient main balance!');
+    }
   };
 
   return (
