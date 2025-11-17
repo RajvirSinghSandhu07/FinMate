@@ -15,12 +15,22 @@ export const CreatePocketModal = ({ open, onOpenChange }: { open: boolean; onOpe
   const [selectedColor, setSelectedColor] = useState(COLORS[0]);
 
   const handleCreate = () => {
-    if (!name || !balance) {
-      toast.error('Please fill all fields');
+    if (!name) {
+      toast.error('Please enter a pocket name');
+      return;
+    }
+
+    if (balance === '') {
+      toast.error('Please enter an initial balance');
       return;
     }
 
     const amount = parseFloat(balance);
+    if (isNaN(amount) || amount < 0) {
+      toast.error('Please enter a valid amount');
+      return;
+    }
+
     const success = addPocket({
       name,
       balance: amount,
