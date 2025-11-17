@@ -31,12 +31,16 @@ export const PaymentModal = ({ open, onOpenChange }: { open: boolean; onOpenChan
       return;
     }
 
-    makePayment(numAmount, source, receiver);
-    toast.success('Payment successful!');
-    setAmount('');
-    setReceiver('');
-    setSource('main');
-    onOpenChange(false);
+    const success = makePayment(numAmount, source, receiver);
+    if (success) {
+      toast.success('Payment successful!');
+      setAmount('');
+      setReceiver('');
+      setSource('main');
+      onOpenChange(false);
+    } else {
+      toast.error('Payment failed. Please try again.');
+    }
   };
 
   return (
