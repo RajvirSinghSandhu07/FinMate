@@ -1,10 +1,15 @@
-import { Wallet, TrendingUp } from 'lucide-react';
+import { Wallet, TrendingUp, Edit } from 'lucide-react';
 import { useApp } from '@/contexts/AppContext';
+import { useState } from 'react';
+import { EditBalanceModal } from './EditBalanceModal';
 
 export const BalanceCard = () => {
   const { mainBalance, points, badge } = useApp();
+  const [showEditModal, setShowEditModal] = useState(false);
 
   return (
+    <>
+      <EditBalanceModal open={showEditModal} onOpenChange={setShowEditModal} />
     <div className="relative overflow-hidden rounded-3xl bg-gradient-primary p-6 shadow-glow">
       <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
       
@@ -21,8 +26,17 @@ export const BalanceCard = () => {
         </div>
 
         <div className="mb-2">
-          <div className="text-5xl font-bold text-white mb-1">
-            ₹{mainBalance.toLocaleString('en-IN')}
+          <div className="flex items-center gap-3">
+            <div className="text-5xl font-bold text-white mb-1">
+              ₹{mainBalance.toLocaleString('en-IN')}
+            </div>
+            <button
+              onClick={() => setShowEditModal(true)}
+              className="mb-1 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+              aria-label="Edit balance"
+            >
+              <Edit className="h-5 w-5 text-white" />
+            </button>
           </div>
           <div className="text-white/80 text-sm">
             Badge: <span className="font-semibold">{badge}</span>
@@ -30,5 +44,6 @@ export const BalanceCard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };

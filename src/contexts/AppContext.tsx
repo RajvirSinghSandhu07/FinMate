@@ -39,7 +39,8 @@ interface AppContextType {
   friends: Friend[];
   points: number;
   badge: string;
-  addPocket: (pocket: Omit<Pocket, 'id'>) => void;
+  setMainBalance: (amount: number) => void;
+  addPocket: (pocket: Omit<Pocket, 'id'>) => boolean;
   updatePocket: (id: string, amount: number) => void;
   transferToPocket: (pocketId: string, amount: number) => void;
   makePayment: (amount: number, from: string, to: string, category?: string) => void;
@@ -75,7 +76,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, [points]);
 
   const addPocket = (pocket: Omit<Pocket, 'id'>) => {
-    setPockets([...pockets, { ...pocket, id: Date.now().toString() }]);
+    if (mainBalance >= pocket.balance) {
+      setMainBalance(mainBalance - pocket.balance);
+      setPockets([...pockets, { ...pocket, id: Date.now().toString() }]);
+      return true;
+    }
+    return false;
   };
 
   const updatePocket = (id: string, amount: number) => {
@@ -152,6 +158,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       friends,
       points,
       badge,
+      setMainBalance,
       addPocket,
       updatePocket,
       transferToPocket,
