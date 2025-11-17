@@ -43,7 +43,7 @@ interface AppContextType {
   addPocket: (pocket: Omit<Pocket, 'id'>) => boolean;
   updatePocket: (id: string, amount: number) => void;
   transferToPocket: (pocketId: string, amount: number) => void;
-  makePayment: (amount: number, from: string, to: string, category?: string) => void;
+  makePayment: (amount: number, from: string, to: string, category?: string) => boolean;
   addSavedReceiver: (receiver: Omit<SavedReceiver, 'id'>) => void;
   addFriend: (friend: Omit<Friend, 'id'>) => void;
   splitPayment: (amount: number, members: number, from: string) => void;
@@ -109,27 +109,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   };
 
   const makePayment = (amount: number, from: string, to: string, category?: string) => {
+    let success = false;
+    
     if (from === 'main') {
       if (mainBalance >= amount) {
-        setMainBalance(mainBalance - amount);
+        setMainBalance(prev => prev - amount);
+        success = true;
       }
     } else {
-      setPockets(pockets.map(p => 
-        p.id === from && p.balance >= amount ? { ...p, balance: p.balance - amount } : p
-      ));
+      const pocket = pockets.find(p => p.id === from);
+      if (pocket && pocket.balance >= amount) {
+        setPockets(prev => prev.map(p => 
+          p.id === from ? { ...p, balance: p.balance - amount } : p
+        ));
+        success = true;
+      }
     }
 
-    setTransactions([{
-      id: Date.now().toString(),
-      type: 'payment',
-      amount,
-      from: from === 'main' ? 'Main Balance' : pockets.find(p => p.id === from)?.name || '',
-      to,
-      date: new Date(),
-      category,
-    }, ...transactions]);
+    if (success) {
+      setTransactions(prev => [{
+        id: Date.now().toString(),
+        type: 'payment',
+        amount,
+        from: from === 'main' ? 'Main Balance' : pockets.find(p => p.id === from)?.name || '',
+        to,
+        date: new Date(),
+        category,
+      }, ...prev]);
 
-    addPoints(10);
+      addPoints(10);
+    }
+    
+    return success;
   };
 
   const addSavedReceiver = (receiver: Omit<SavedReceiver, 'id'>) => {
