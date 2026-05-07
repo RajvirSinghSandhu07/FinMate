@@ -1,73 +1,85 @@
-# Welcome to your Lovable project
-
-## Project info
 
 **URL**: https://lovable.dev/projects/1c73e1a2-e01c-4bb7-a6db-0b4131027b1f
 
-## How can I edit this code?
+FinMate 💳
+Smart Student Finance & Payment Hub
+Built with sincerity and thought by Team FinVerse (cheetah AI hackathon) 1st Sem CSE (AI & ML), Ramaiah Institute of Technology (MSRIT)
 
-There are several ways of editing your application.
+📌 Overview
+FinMate is an intuitive, gamified personal finance and payment hub designed specifically to help students manage their budgets, track expenses, and make payments seamlessly.
 
-**Use Lovable**
+Instead of dealing with the stress of real money during development, FinMate introduces a points-based spending system to simulate financial transactions safely. It combines budgeting with smart payment workflows to keep student life organized and financially disciplined.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1c73e1a2-e01c-4bb7-a6db-0b4131027b1f) and start prompting.
+Why FinMate? > Most students struggle with pocket money management. Expenses get mixed up, and tracking where money goes feels like a chore. FinMate solves this by acting as both a payment portal and a smart money manager using a unique "Smart Pocket" architecture.
 
-Changes made via Lovable will be committed automatically to this repo.
+✨ Key Features
+1. 📂 The Smart Pocket System (Core Feature)
+Enveloping Budgets: Allocate your main balance into dedicated "Pockets" such as Food, Travel, Subscriptions, Shopping, Recharge, and Rent.
 
-**Use your preferred IDE**
+Targeted Deductions: When making a transaction, you can choose to pay directly from a specific pocket rather than draining your main balance. This prevents overspending in any single category.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. ⚡ Assigned QR / Payment IDs
+One-Tap Payments: Save and link specific payment destinations (like the college canteen QR, local stationery shop, or hostel store) directly to a dedicated pocket.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Zero-friction checkout: Clicking a saved receiver automatically selects the correct pocket and initiates the transaction instantly—no manual scanning or source selection required.
 
-Follow these steps:
+3. 👥 Group Bill Splitting
+Fair & Automated: Split group bills instantly. One user pays the full amount, and FinMate automatically calculates even shares, sending approval requests to friends to deduct the amount from their chosen pockets.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+4. 💸 One-Click Peer Transfers
+Safe Transactions: Send and receive points instantly with friends to simulate real peer-to-peer transfers within a closed ecosystem.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+5. 📊 Analytics & Gamification
+Visual Insights: Real-time data visualization featuring pie charts, weekly comparisons, and monthly trend graphs.
 
-# Step 3: Install the necessary dependencies.
-npm i
+Behavioral Incentives: Earn saving points, maintain streak bonuses, and unlock badges like Beginner, Saver Star, and Finance King to build healthy financial habits.
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+🛠️ Tech Stack
+This project is a high-fidelity frontend prototype built to demonstrate production-ready UI/UX and client-side logic:
+
+Frontend Framework: React (with Vite)
+
+Language: TypeScript
+
+Styling: Tailwind CSS (for modern, responsive design)
+
+UI Components: Shadcn/UI & Radix UI (for clean, accessible components)
+
+Icons: Lucide React
+
+Development Platform: Prototyped and accelerated using Lovable AI
+
+🚀 How to Run the Project Locally
+To run this React application locally on your machine, follow these steps:
+
+Clone the repository:
+
+Bash
+git clone https://github.com/RajvirSinghSandhu07/finmate-pocket-points.git
+Navigate into the project directory:
+
+Bash
+cd finmate-pocket-points
+Install dependencies:
+
+Bash
+npm install
+Start the local development server:
+
+Bash
 npm run dev
-```
+Open http://localhost:5173 in your browser to view the application!
 
-**Edit a file directly in GitHub**
+🔮 Future Roadmap
+As CSE (AI & ML) students, our goal is to evolve this frontend prototype into a robust production-grade application by:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Integrating Google Cloud Firestore / Firebase for real-time user authentication and secure database management.
 
-**Use GitHub Codespaces**
+Implementing Predictive AI Budgeting to analyze user spending patterns and automatically suggest optimized pocket allocations using ML models.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Integrating with UPI Sandboxes to bridge the gap between simulation points and actual micro-transactions.
 
-## What technologies are used for this project?
+👥 Team FinVerse
+Rajvir Singh Sandhu (Lead & Developer)
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/1c73e1a2-e01c-4bb7-a6db-0b4131027b1f) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+MSRIT CSE (AI & ML) — Batch of 2029
