@@ -57,7 +57,7 @@ To run this React application locally on your machine, follow these steps:
 Clone the repository:
 
 Bash
-git clone https://github.com/RajvirSinghSandhu07/finmate-pocket-points.git
+git clone https://github.com/RajvirSinghSandhu07/FinMate.git
 Navigate into the project directory:
 
 Bash
