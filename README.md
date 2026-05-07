@@ -63,7 +63,7 @@ Bash
 git clone https://github.com/RajvirSinghSandhu07/FinMate.git
 Navigate into the project directory:
 
-Bash
+Deployed version link: https://fin-mate-two.vercel.app/
 
 
 
